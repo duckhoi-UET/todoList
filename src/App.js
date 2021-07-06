@@ -21,34 +21,6 @@ class App extends Component {
       });
     }
   }
-  onGenerateData = () => {
-    var tasks = [
-      {
-        id : key.generate(),
-        name : "Task 1",
-        status : true
-      },
-      {
-        id : key.generate(),
-        name : "Task 2",
-        status : false
-      },
-      {
-        id : key.generate(),
-        name : "Task 3",
-        status : true
-      },
-      {
-        id : key.generate(),
-        name : "Task 4",
-        status : false
-      }
-    ];
-    this.setState({
-      tasks : tasks
-    });
-    localStorage.setItem("tasks", JSON.stringify(tasks));
-  }
 
   onChangeDisplay = () => {
     this.setState({
@@ -85,7 +57,7 @@ class App extends Component {
               <div className="card border-light mb-3">
                   <div className="card-header text-white bg-light mb-3">
                     <button type="button" class={isDisplayForm ? "btn btn-danger" : "btn btn-success"} onClick={this.onChangeDisplay}>{isDisplayForm ? "Hủy Thêm" : "Thêm Công Việc"}</button>&nbsp;
-                    <button type="button" class="btn btn-warning" onClick={this.onGenerateData}>Generate Data</button>
+                    
                   </div>
                   <div className="card-body">
                       <form>

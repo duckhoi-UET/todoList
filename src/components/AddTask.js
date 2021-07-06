@@ -26,12 +26,19 @@ class AddTask extends Component {
     onSubmit = (event) => {
         event.preventDefault();
         this.props.onSubmit(this.state);
+        this.onClear();
+    }
+    onClear = () => {
+      this.setState({
+        name : "",
+        status: false
+      })
     }
     render() {
         return (
             <div className="col-4">
               <div className="card border-warning mb-3">
-                <div className="card-header text-white bg-warning mb-3 col"><b>Thêm Công Việc</b></div>
+                <div className="card-header text-white bg-warning mb-3"><b>Thêm Công Việc</b></div>
                 <div className="card-body">
                     <form onSubmit={this.onSubmit}>
                       <div className="form-group">
@@ -48,7 +55,7 @@ class AddTask extends Component {
                         <hr/>
                       </div>
                       <button className="btn btn-warning" type="submit"><i className="fa fa-plus" aria-hidden="true" /> Lưu Lại</button>&nbsp;
-                      <button className="btn btn-danger" type="button" onClick={this.onCloseForm}><i className="fa fa-ban" aria-hidden="true" ></i> Hủy Bỏ</button>
+                      <button className="btn btn-danger" type="button" onClick={this.onClear}><i className="fa fa-ban" aria-hidden="true" ></i> Hủy Bỏ</button>
                     </form>
                 </div>
               </div>
