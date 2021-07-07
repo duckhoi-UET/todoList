@@ -22,6 +22,7 @@ class App extends Component {
     }
   }
 
+
   onChangeDisplay = () => {
     this.setState({
       isDisplayForm : !this.state.isDisplayForm
@@ -62,7 +63,8 @@ class App extends Component {
                   <div className="card-body">
                       <form>
                         <Controler/>
-                        <TableTask tasks = {tasks}/>
+                        <TableTask tasks = {tasks}
+                                    onUpdateStatus={this.onUpdateStatus}/>
                       </form>
                   </div>
               </div>

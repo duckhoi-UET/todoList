@@ -16,11 +16,11 @@ class Controler extends Component {
                             Sắp xếp
                         </button>
                         <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a className="dropdown-item" href="#"><i className="fa fa-sort-alpha-asc" aria-hidden="true"></i> Tên A-Z</a>
-                            <a className="dropdown-item" href="#"><i className="fa fa-sort-alpha-desc" aria-hidden="true"></i> Tên Z-A</a>
+                            <a className="dropdown-item"><i className="fa fa-sort-alpha-asc" aria-hidden="true"></i> Tên A-Z</a>
+                            <a className="dropdown-item"><i className="fa fa-sort-alpha-desc" aria-hidden="true"></i> Tên Z-A</a>
                             <hr/>
-                            <a className="dropdown-item" href="#">Trạng thái Kích Hoạt</a>
-                            <a className="dropdown-item" href="#">Trạng thái Ẩn</a>
+                            <a className="dropdown-item">Trạng thái Kích Hoạt</a>
+                            <a className="dropdown-item">Trạng thái Ẩn</a>
                         </div>
                     </div>
                 </div>
