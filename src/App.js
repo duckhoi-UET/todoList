@@ -43,6 +43,41 @@ class App extends Component {
     });
     localStorage.setItem("tasks", JSON.stringify(tasks));
   }
+  onUpdateStatus = (id) => {
+    var {tasks} = this.state;
+    var index = this.findIndex(id);
+    if(index !== -1) {
+      tasks[index].status = !tasks[index].status;
+      this.setState({
+        tasks : tasks
+      });
+      localStorage.setItem("tasks", JSON.stringify(tasks));
+    }
+  }
+
+  findIndex = (id) => {
+    var {tasks} = this.state;
+    var result = -1;
+    tasks.forEach((task, index) => {
+      if(task.id === id) {
+        result =  index;
+      }
+    });
+    return result;
+  }
+  onDelete = (id) => {
+    var {tasks} = this.state;
+    var index = this.findIndex(id);
+    if(index !== -1) {
+      tasks.splice(index, 1);
+      this.setState({
+        
+        tasks : tasks
+      });
+      localStorage.setItem("tasks", JSON.stringify(tasks));
+    }
+    this.onCloseForm();
+  }
 
   render() {
     var {tasks, isDisplayForm} = this.state;
@@ -62,7 +97,9 @@ class App extends Component {
                   <div className="card-body">
                       <form>
                         <Controler/>
-                        <TableTask tasks = {tasks}/>
+                        <TableTask tasks = {tasks} 
+                                    onUpdateStatus = {this.onUpdateStatus}
+                                    onDelete = {this.onDelete}/>
                       </form>
                   </div>
               </div>

@@ -5,7 +5,9 @@ class TableTask extends Component {
     render() {
         var tasks = this.props.tasks;
         var elemTasks = tasks.map((task, index) => {
-            return <Task key={task.id} index = {index + 1} task={task}/>
+            return <Task key={task.id} index = {index + 1} task={task} 
+                        onUpdateStatus = {this.props.onUpdateStatus}
+                        onDelete={this.props.onDelete}/>
         });
         return (
             <div className="form-group text-center">
