@@ -1,13 +1,26 @@
 import React, { Component } from 'react';
+import { Modal} from 'antd';
 
 class AddTask extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            id : "",
             name : "",
             status : false
         }
     }
+    
+    componentWillMount() {
+      if(this.props.task){
+        this.setState({
+          id : this.props.task.id,
+          name : this.props.task.name,
+          status : this.props.task.status
+        });
+      }
+    }
+    
     onCloseForm = () => {
         this.props.onCloseForm();
     }
@@ -27,6 +40,7 @@ class AddTask extends Component {
         event.preventDefault();
         this.props.onSubmit(this.state);
         this.onClear();
+        this.onCloseForm();
     }
     onClear = () => {
       this.setState({
@@ -35,12 +49,10 @@ class AddTask extends Component {
       })
     }
     render() {
+        var {id} = this.state;
         return (
-            <div className="col-4">
-              <div className="card border-warning mb-3">
-                <div className="card-header text-white bg-warning mb-3"><b>Thêm Công Việc</b></div>
-                <div className="card-body">
-                    <form onSubmit={this.onSubmit}>
+          <Modal title={id !== "" ? "Cập Nhật" : "Thêm Công Việc"} visible={this.props.visible} onOk={this.onSubmit} onCancel={this.onCloseForm}>
+
                       <div className="form-group">
                         <label htmlFor><b>Tên</b></label>
                         <input type="text" name="name" id className="form-control" value={this.state.name} onChange = {this.onChange}/>
@@ -49,17 +61,12 @@ class AddTask extends Component {
                         <label htmlFor><b>Trạng thái</b></label>
                         <select className="custom-select" name="status" value={this.state.status} onChange = {this.onChange}>
                         
-                          <option value={true}>Kích Hoạt</option>
-                          <option value={false}>Ẩn</option>
+                          <option value={true}>Đã Hoàn Thành</option>
+                          <option value={false}>Chưa Hoàn Thành</option>
                         </select>
                         <hr/>
                       </div>
-                      <button className="btn btn-warning" type="submit"><i className="fa fa-plus" aria-hidden="true" /> Lưu Lại</button>&nbsp;
-                      <button className="btn btn-danger" type="button" onClick={this.onClear}><i className="fa fa-ban" aria-hidden="true" ></i> Hủy Bỏ</button>
-                    </form>
-                </div>
-              </div>
-          </div>
+          </Modal>
         );
     }
 }
